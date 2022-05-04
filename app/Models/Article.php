@@ -19,6 +19,7 @@ class Article extends Model
 
     protected $table = "Articles";
 
+
     public function category()
     {
         return $this->belongsTo(Category::class);

@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@include('sections.nav')
+@include('sections.mainnav')
 @section('content')
 
     <div class="container">

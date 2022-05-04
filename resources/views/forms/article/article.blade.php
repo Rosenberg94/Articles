@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@include('sections.nav')
+@include('sections.mainnav')
 @section('content')
 
     <div class="container">
@@ -10,9 +10,9 @@
                 <div class="card-body text-center">
                     <div class="col-md-12">
                         @if($article->image)
-                            <img src="{{asset($article->image)}}" class="img-fluid rounded-start img-article1" alt="...">
+                            <img src="{{asset('storage/' . $article->image)}}" class="img-fluid rounded-start img-article1" alt="...">
                         @else
-                            <img src="{{asset('storage/articles/images/default.jpg')}}" class="img-fluid rounded-start img-article1 w3-image" alt="...">
+                            <img src="{{asset('storage/images/default.jpg')}}" class="img-fluid rounded-start img-article1 w3-image" alt="...">
                         @endif
                     </div>
                     <p class="card-text">{{$article->content}}</p>
@@ -24,13 +24,13 @@
                         @if (Route::has('login'))
                         @auth
                         <div class="col-md-3">
-                            <a href="{{route('article_edit', ["id" => $article->id])}}" class="btn btn-warning">edit_article</a>
+                            <a href="{{route('article_edit', ["id" => $article->id])}}" class="btn btn-warning btn-sm">edit_article</a>
                         </div>
                         <div class="col-md-3">
                             <form action="{{route('article_delete') }}" method="POST">
                                 {{ csrf_field() }}
                                 <input type="text" class="form-control" name="id" value="{{$article->id}}" hidden>
-                                <button type="submit" id="delete-task-{{ $article->id }}" class="btn btn-danger" onclick="if( ! confirm('fdsfdsf')){return false;}">
+                                <button type="submit" id="delete-task-{{ $article->id }}" class="btn btn-danger btn-sm" onclick="if( ! confirm('fdsfdsf')){return false;}">
                                     <i class="fa fa-btn fa-trash"></i>Delete
                                 </button>
                             </form>

@@ -13,6 +13,7 @@ class MainController extends Controller
     public function index(Request $request)
     {
         $category_id = $request->category_id;
+
         if($category_id){
             $articles = Article::where('category_id', $category_id)->get()->sortBy('updated_at');
         } else {
@@ -41,8 +42,7 @@ class MainController extends Controller
 
     public function foo()
     {
-        $article = Article::find(2);
-        dd($article->category->name);
+        return view('foo');
     }
 
 }

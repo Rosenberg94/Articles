@@ -2,15 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ArticleCreateRequest;
+use App\Http\Traits\ArticleTrait;
 use App\Models\Article;
 use App\Models\Category;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use phpDocumentor\Reflection\Types\Boolean;
 
 class ArticleController extends Controller
 {
+    use ArticleTrait;
+
     public function articleShow(Request $request)
     {
         $article_id = $request->id;
@@ -26,20 +29,9 @@ class ArticleController extends Controller
         return view('forms.article.create', ['categories' => $categories]);
     }
 
-    public function articleCreate(Request $request)
+    public function articleCreate(ArticleCreateRequest $request)
     {
-        $data = $request->except("_token");
-        $article = new Article();
-        $article->title = $data['title'];
-        $article->content = $data['content'];
-        $article->category_id = $data['category_id'];
-        $article->user_id = Auth::user()->id;
-        $file = $request->file('image');
-        if($file){
-            $input['image'] = $request->file('image')->store(
-                'images', 'public');
-        }
-        $article->save();
+        Article::create($this->getArticleData($request));
 
         return redirect(route('main'));
     }

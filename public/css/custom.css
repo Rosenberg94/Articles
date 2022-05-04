@@ -1,14 +1,35 @@
 .img-article {
-    width:150px;
-    height:150px;
-    margin:30px;
+    width:180px;
+    height:180px;
+    margin:10px;
 }
 
 .img-article1 {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 500px;
-    height:500px;
-
+    width: 600px;
+    height:600px;
 }
+
+.bg-dark-grey {
+    background-color: #e7ebef!important;
+}
+
+.bg-grey {
+    background-color: #e2e4ea47!important;
+}
+
+.card-body a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.author {
+    text-align: right!important;
+}
+
+.cat-color {
+    color: darkslateblue!important;
+}
+

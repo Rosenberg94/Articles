@@ -1,10 +1,10 @@
 @extends('layouts.master')
-@include('sections.nav')
+@include('sections.mainnav')
 @section('content')
     <div class="row justify-content-center">
         <div class=" card col-md-7">
             <h2 class="text-center mt-3 mb-3" >Create article</h2>
-            <form action="{{ route("article_create") }}" method="post">
+            <form action="{{ route("article_create") }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group row">
                     <div class="col-md-4">

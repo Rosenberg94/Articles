@@ -11,9 +11,15 @@
     <!-- Custom CSS -->
     <link href="{{asset("/css/custom.css")}}" rel="stylesheet"  type="text/css">
 
+    <style>
+        body {
+            background-color: coral;
+        }
+    </style>
+
     <title>Articles</title>
 </head>
-<body>
+<body class="navbar-articles">
 @if(session()->has('success'))
     <div class="alert alert-success">
         {{ session()->get('success') }}
@@ -28,8 +34,12 @@
         </ul>
     </div>
 @endif
+<div class="container text-center">
+</div>
 <div class="container">
     @yield('content')
+
+    <h5>FOO</h5>
 </div>
 <!-- Optional JavaScript; choose one of the two! -->
 
