@@ -1,11 +1,12 @@
 @extends('layouts.master')
 @include('sections.mainnav')
 @section('content')
+
     <script src="{{asset('js/script.js')}}" ></script>
     @foreach($articles as $article)
     <div class="row">
         <div class="col-md-2"></div>
-        <div class="card mt-3 mb-3 col-md-8">
+        <div class="card mt-2 col-md-8">
             <div class="row">
                 <div class="col-md-4 bg-grey text-center">
                     @if($article->image)
@@ -26,7 +27,21 @@
                         <div class="row">
                             <div class="col-md-4"> <small class="text-muted">{{$article->created_at->format('d-m-Y')}}</small></div>
                             <div class="col-md-2"></div>
-                            <div class="col-md-6 author"><h6>{{$article->user['name']}}</h6></div>
+                            <div class="col-md-6 author">
+                                @auth
+                                    @if(auth()->user()->userHasLike($article->id))
+                                        <img height="20px" width="20px" src="{{asset('storage/like2.png')}}" />
+                                    @else
+                                        <a href="{{route('like', ["id" => $article->id])}}" class="disabled">
+                                            <img height="20px" width="20px" src="{{asset('storage/like2.png')}}" />
+                                        </a>
+                                    @endif
+                                @endauth
+                                <span> {{count($article->likes)}}</span>
+                                <a href="{{route('main', ["user_id" => $article->user_id])}}">
+                                    <h6>{{$article->user['name']}}</h6>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -35,6 +50,9 @@
         <div class="col-md-2"></div>
     </div>
     @endforeach
+    {{$articles->links('vendor.pagination.simple-bootstrap-4')}}
+    <br>
+
 @endsection
 
 

@@ -13,7 +13,7 @@
 
     <title>Articles</title>
 </head>
-<body>
+<body class="body-clr">
 @if(session()->has('success'))
     <div class="alert alert-success">
         {{ session()->get('success') }}

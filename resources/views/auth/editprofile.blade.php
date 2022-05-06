@@ -1,18 +1,19 @@
 @extends('layouts.master')
+@extends('sections.mainnav')
 @section('content')
 
 
 
 
 
-    <div class="container">
+    <div class="container mt-3">
         <div class="row justify-content-center">
             <div class="col-md-7">
                 <div class="card">
-                    <div class="card-header" align="center">
+                    <div class="card-header bg-dark-grey" align="center">
                         <h3>Edit profile</h3>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body bg-grey">
                         <form method="POST" action="{{route('profile_update')}}">
                             @csrf
                             <input type="text" class="form-control" id="id" name="id" value="{{$user->id}}" hidden>

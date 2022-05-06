@@ -4,9 +4,9 @@
 
     <div class="class row">
         <div class="col-md-2"></div>
-            <div class="card row col-md-8">
+            <div class="card row col-md-8 mt-3 bg-grey">
                 <h2 class="text-center mt-3 mb-3">Edit article</h2>
-                <form action="{{ route("article_update") }}" method="post">
+                <form action="{{ route("article_update") }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <div class="col-md-4">
@@ -22,7 +22,7 @@
                     </div>
                     <div class="row">
                         <div class="mb-3 col-md-4">
-                            <label for="title" class="form-label">title</label>
+                            <label for="title" class="form-label">Title</label>
                         </div>
                         <div class="mb-3 col-md-8">
                             <input type="text" class="form-control" id="title" name="title" value="{{$article->title}}">
