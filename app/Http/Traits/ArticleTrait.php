@@ -40,12 +40,4 @@ trait ArticleTrait
 
         return $article_data;
     }
-
-    public function deleteImage($article_id)
-    {
-//        $article = Article::find($article_id);
-//        if($article->image) {
-//            if($file)
-//        }
-    }
 }

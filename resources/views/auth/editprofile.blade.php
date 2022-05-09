@@ -14,7 +14,7 @@
                         <h3>Edit profile</h3>
                     </div>
                     <div class="card-body bg-grey">
-                        <form method="POST" action="{{route('profile_update')}}">
+                        <form method="POST" action="{{route('profile_update')}}" enctype="multipart/form-data">
                             @csrf
                             <input type="text" class="form-control" id="id" name="id" value="{{$user->id}}" hidden>
                             <div class="form-group row mt-3">

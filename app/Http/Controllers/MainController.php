@@ -50,4 +50,14 @@ class MainController extends Controller
 
         return view('foo');
     }
+
+    private function __articleImageDestroy($request)
+    {
+        $user = User::find($request->user);
+        if (isset($user->image)){
+            if(Storage::disk('public')->exists($user->image)){
+                Storage::delete($user->image);
+            }
+        }
+    }
 }

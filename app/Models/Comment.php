@@ -13,6 +13,7 @@ class Comment extends Model
         'content',
         'article_id',
         'user_id',
+        'image',
     ];
 
     protected $table = "Comments";

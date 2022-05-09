@@ -65,5 +65,6 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'check.user.role' => \App\Http\Middleware\CheckUserRole::class,
         'article.belongs.user' => \App\Http\Middleware\IsArticleBelongsUser::class,
+        'comment.belongs.user' => \App\Http\Middleware\IsCommentDelongsUser::class,
     ];
 }

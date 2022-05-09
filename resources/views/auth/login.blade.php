@@ -5,14 +5,14 @@
     <x-auth-session-status class="mb-4" :status="session('status')" />
     <!-- Validation Errors -->
     <x-auth-validation-errors class="mb-4" :errors="$errors" />
-    <div class="container">
+    <div class="container mt-3">
         <div class="row justify-content-center">
             <div class="col-md-7">
                 <div class="card">
-                    <div class="card-header" align="center">
+                    <div class="card-header bg-dark-grey" align="center">
                         <h3>Login</h3>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body bg-grey">
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
                             <div class="form-group row mt-3">
