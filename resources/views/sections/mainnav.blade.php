@@ -1,23 +1,17 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="{{route('main')}}">Alex articles</a>
+<nav class="navbar navbar-expand-lg navbar-light bg-light navbar-articles bg-dark-grey">
+    <div class="container-fluid" >
+        <a class="navbar-brand" href="{{route('main')}}"><h3 class="txt-clr">Alex articles</h3></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                {{--                <li class="nav-item">--}}
-                {{--                    <a class="nav-link active" aria-current="page" href="#">Home</a>--}}
-                {{--                </li>--}}
-                {{--                <li class="nav-item">--}}
-                {{--                    <a class="nav-link" href="#">Link</a>--}}
-                {{--                </li>--}}
-                @auth
+                 @auth
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Actions
+                            <h6 class="txt-clr">Actions</h6>
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <ul class="dropdown-menu bg-grey" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="{{ route('profile_edit') }}">Profile edit</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="{{ route('article_create_form') }}">Create article</a></li>
@@ -28,16 +22,19 @@
                         </ul>
                     </li>
                      @endauth
+                @isset($categories)
                     <div class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                            Category
+                            <h6 class="txt-clr">Category</h6>
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <ul class="dropdown-menu bg-grey" aria-labelledby="navbarDropdown">
                             @foreach($categories as $category)
                                 <li><a class="dropdown-item" href="{{route('main', ['category_id' => $category->id])}}">{{$category->name}}</a></li>
+                                <li><hr class="dropdown-divider"></li>
                             @endforeach
                         </ul>
                     </div>
+                @endisset
             </ul>
             <div class="d-flex">
                 <div class="container">
@@ -46,7 +43,9 @@
                             <div class="col-md-3">
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf
-                                    <button type="submit" class="btn btn-warning">Logout</button>
+                                    <button type="submit" class="btn btn-outline-secondary">
+                                        <h6 class="txt-clr">Logout</h6>
+                                    </button>
                                 </form>
                             </div>
                         </div>

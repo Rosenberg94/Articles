@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@include('sections.nav')
+@include('sections.mainnav')
 @section('content')
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />

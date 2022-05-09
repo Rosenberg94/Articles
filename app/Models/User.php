@@ -51,8 +51,25 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Role::class);
     }
-    public function posts() {
+
+    public function posts()
+    {
         return $this->hasMany(Article::class);
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function userHasLike($article_id)
+    {
+        $like = Like::where([
+            'user_id' => $this->id,
+            'article_id' => $article_id,
+        ])->first();
+
+        return $like ? true : false;
     }
 
 

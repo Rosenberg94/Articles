@@ -19,6 +19,7 @@ class Article extends Model
 
     protected $table = "Articles";
 
+
     public function category()
     {
         return $this->belongsTo(Category::class);
@@ -27,6 +28,16 @@ class Article extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
     }
 
 }
