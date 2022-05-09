@@ -5,8 +5,8 @@
     <div class="row">
         <div class="col-md-2"></div>
         <div class=" card col-md-8 mt-3 bg-grey">
-            <h2 class="text-center mb-3">Make comment</h2>
-            <form action="{{ route("comment_create") }}" method="post">
+            <h2 class="text-center mb-3 mt-3">Make comment</h2>
+            <form action="{{ route("comment_create") }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                     <div class="col-md-4">
@@ -15,6 +15,7 @@
                     <div class="col-md-7">
                         <input type="text" class="form-control" id="content" name="content">
                         <input type="text" class="form-control" id="article_id" name="article_id" value="{{$article->id}}" hidden>
+                        <input id="image" name="image" type="file" class="form-control mt-3">
                     </div>
                 </div>
                 <div class="mt-3 text-center">

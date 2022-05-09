@@ -22,6 +22,7 @@ class ArticleController extends Controller
     public function articleShow(Request $request)
     {
         $article = Article::find($request->id);
+        $article->comments = Comment::orderByDesc('created_at')->simplePaginate(10);
 
         return view('forms.article.article', ['comments' => $article->comments,'article' => $article]);
     }

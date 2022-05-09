@@ -47,6 +47,9 @@ Route::group(['middleware' =>'auth'], function() {
     Route::group(['prefix'=> 'comment'], function () {
         Route::get('/create/form', '\App\Http\Controllers\CommentController@createForm')->name('comment_create_form');
         Route::post('/create', '\App\Http\Controllers\CommentController@create')->name('comment_create');
+        Route::get('/edit', '\App\Http\Controllers\CommentController@edit')->middleware('comment.belongs.user')->name('comment_edit');
+        Route::post('/update', '\App\Http\Controllers\CommentController@update')->middleware('comment.belongs.user')->name('comment_update');
+        Route::post('/delete', '\App\Http\Controllers\CommentController@destroy')->middleware('comment.belongs.user')->name('comment_delete');
     });
 
     Route::group(['prefix'=> 'like'], function () {
