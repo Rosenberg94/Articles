@@ -6,7 +6,7 @@
     @foreach($articles as $article)
     <div class="row">
         <div class="col-md-2"></div>
-        <div class="card mt-2 col-md-8">
+        <div class="card mt-2 col-md-8 crd-brd">
             <div class="row">
                 <div class="col-md-4 bg-grey text-center">
                     @if($article->image)
@@ -50,8 +50,10 @@
         <div class="col-md-2"></div>
     </div>
     @endforeach
-    {{$articles->links('vendor.pagination.simple-bootstrap-4')}}
-    <br>
+    <div class="text-center mt-3 mb-3">
+        {{$articles->links('vendor.pagination.simple-bootstrap-4')}}
+    </div>
+
 
 @endsection
 

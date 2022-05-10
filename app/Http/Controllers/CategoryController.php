@@ -15,18 +15,20 @@ class CategoryController extends Controller
         return view('forms.category.categories', ['categories' => $categories]);
     }
 
+
     public function categoryCreateForm()
     {
         return view('forms.category.create');
     }
 
+
     public function categoryEdit(Request $request)
     {
-        $category_id = $request->id;
-        $category = Category::find($category_id);
+        $category = Category::find($request->id);
 
         return view('forms.category.edit', ['category' => $category]);
     }
+
 
     public function categoryCreate(Request $request)
     {
@@ -37,6 +39,7 @@ class CategoryController extends Controller
 
         return redirect(route('categories'))->with('success', 'Category has been successfully created!');
     }
+
 
     public function categoryUpdate(Request $request)
     {
@@ -49,10 +52,9 @@ class CategoryController extends Controller
         return back()->withErrors( 'The category is not isset');
     }
 
+
     public function destroy(Request $request)
     {
-        $category_id = $request->id;
-        $category = Category::find($category_id);
         if ($category = Category::find($request->id)){
             $category->delete();
 
