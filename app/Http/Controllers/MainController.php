@@ -16,11 +16,11 @@ class MainController extends Controller
         $user_id = $request->user_id;
 
         if($category_id){
-            $articles = Article::where('category_id', $category_id)->orderByDesc('created_at')->simplePaginate(10);
+            $articles = Article::where('category_id', $category_id)->orderByDesc('created_at')->paginate(10);
         } elseif($user_id) {
-              $articles = Article::where('user_id', $user_id)->orderByDesc('created_at')->simplePaginate(10);
+              $articles = Article::where('user_id', $user_id)->orderByDesc('created_at')->paginate(10);
         } else{
-            $articles = Article::orderByDesc('created_at')->simplePaginate(10);
+            $articles = Article::orderByDesc('created_at')->paginate(10);
         }
         $categories = Category::all();
 
