@@ -50,10 +50,15 @@
         <div class="col-md-2"></div>
     </div>
     @endforeach
-    <div class="text-center mt-3 mb-3">
-        {{$articles->links('vendor.pagination.simple-bootstrap-4')}}
+    <div class="row mt-3">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <div class="text-center" >
+                {{$articles->links()}}
+            </div>
+        </div>
+        <div class="col-md-4"></div>
     </div>
-
 
 @endsection
 
