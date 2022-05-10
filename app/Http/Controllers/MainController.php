@@ -27,22 +27,6 @@ class MainController extends Controller
         return view('main', ['articles' => $articles, 'categories' => $categories]);
     }
 
-    public function profileEdit()
-    {
-        $user = auth()->user();
-
-        return view('auth.editprofile', ['user' => $user]);
-    }
-
-    public function profileUpdate(Request $request)
-    {
-        $input = $request->except('_token');
-        $user = User::find($input['id']);
-        $user->update($input);
-
-        return redirect(route('main'))->with('success', 'Your profile has been successfully updated!');
-    }
-
     public function foo()
     {
        $article = Article::find(5);

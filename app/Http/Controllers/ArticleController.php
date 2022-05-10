@@ -18,11 +18,10 @@ class ArticleController extends Controller
 {
     use ArticleTrait;
 
-
     public function articleShow(Request $request)
     {
         $article = Article::find($request->id);
-        $article->comments = Comment::orderByDesc('created_at')->simplePaginate(10);
+        $article->comments = Comment::orderByDesc('created_at');
 
         return view('forms.article.article', ['comments' => $article->comments,'article' => $article]);
     }
@@ -47,8 +46,7 @@ class ArticleController extends Controller
     public function articleEditForm(Request $request)
     {
         $categories = Category::all();
-        $article_id = $request->id;
-        $article = Article::find($article_id);
+        $article = Article::find($request->id);
 
         return view('forms.article.edit', ['article' => $article, 'categories' => $categories]);
     }

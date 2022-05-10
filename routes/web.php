@@ -18,16 +18,18 @@ require __DIR__.'/auth.php';
 
 Route::get('/', [MainController::class, 'index'])->name('main');
 Route::get('/foo', [MainController::class, 'foo'])->name('foo');
+Route::get('/article/{id}', '\App\Http\Controllers\ArticleController@articleShow')->name('article_show');
 
 
 Route::group(['middleware' =>'auth'], function() {
+
     Route::group(['prefix' => 'profile'], function() {
-        Route::get('/edit', '\App\Http\Controllers\MainController@profileEdit')->name('profile_edit');
-        Route::post('/update', '\App\Http\Controllers\MainController@profileUpdate')->name('profile_update');
+        Route::get('/', '\App\Http\Controllers\UserController@show')->name('profile');
+        Route::get('/edit/{id}', '\App\Http\Controllers\UserController@edit')->name('profile_edit');
+        Route::post('/update', '\App\Http\Controllers\UserController@update')->name('profile_update');
     });
 
     Route::group(['prefix'=> 'article'], function () {
-        Route::get('/{id}', '\App\Http\Controllers\ArticleController@articleShow')->name('article_show');
         Route::get('/create/form', '\App\Http\Controllers\ArticleController@articleCreateForm')->name('article_create_form');
         Route::post('/create', '\App\Http\Controllers\ArticleController@articleCreate')->name('article_create');
         Route::get('/edit/form/{id}', '\App\Http\Controllers\ArticleController@articleEditForm')->middleware('article.belongs.user')->name('article_edit');

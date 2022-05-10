@@ -25,7 +25,8 @@
                                 <h6>{{$article->user['name']}}</h6>
                             </a>
                         </div>
-                        <div class="col-md-2">  @auth
+                        <div class="col-md-2">
+                            @auth
                                 @if(auth()->user()->userHasLike($article->id))
                                     <img height="20px" width="20px" src="{{asset('storage/like2.png')}}" />
                                 @else
@@ -62,7 +63,6 @@
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8 card-body">
-                @if(count($article->comments))
                 <h5 class="text-center"> Comments: </h5>
                 @foreach($article->comments as $comment)
                     <div class="card bg-grey mt-1">
@@ -98,11 +98,6 @@
                         </div>
                     </div>
                 @endforeach
-                @else
-                   <h5 class="text-center">
-                       Here is no comments yet...
-                   </h5>
-                @endif
             </div>
             <div class="col-md-2"></div>
         </div>

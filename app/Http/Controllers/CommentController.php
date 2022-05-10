@@ -38,8 +38,7 @@ class CommentController extends Controller
 
     public function edit(Request $request)
     {
-        $comment_id = $request->id;
-        $comment = Comment::find($comment_id);
+        $comment = Comment::find($request->id);
 
         return view('forms.comment.edit', ['comment' => $comment]);
     }

@@ -12,8 +12,6 @@
                             <h6 class="txt-clr">Actions</h6>
                         </a>
                         <ul class="dropdown-menu bg-grey" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="{{ route('profile_edit') }}">Profile edit</a></li>
-                            <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="{{ route('article_create_form') }}">Create article</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="{{ route('category_create_form') }}">Create category</a></li>
@@ -35,6 +33,13 @@
                         </ul>
                     </div>
                 @endisset
+                     @auth()
+                     <div class="mt-2">
+                         <a href="{{ route( 'profile')}}" class="non-dcr">
+                             <h6>{{auth()->user()->name}}</h6>
+                         </a>
+                     </div>
+                     @endauth
             </ul>
             <div class="d-flex">
                 <div class="container">
