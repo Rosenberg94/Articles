@@ -32,7 +32,7 @@ class CommentController extends Controller
         $data['user_id'] = auth()->user()->id;
         $comment = Comment::create($data);
 
-        return redirect(route('article_show', ['id' => $comment->article->id]))->with('success', 'Comment has been successfully edited!');
+        return redirect(route('article_show', ['id' => $comment->article->id]))->with('success', 'Comment has been successfully created!');
     }
 
 
