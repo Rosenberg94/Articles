@@ -29,11 +29,19 @@ class MainController extends Controller
 
     public function foo()
     {
-       $article = Article::find(5);
-       dump(count($article->comments));
 
-        return view('foo');
+
+        $articles = Article::has('comments', '>', 10)->get();
+        dump($articles);
+
+        return view('foo',['articles' => $articles]);
+
+//       $article = Article::find(5);
+//       dump(count($article->comments));
+//
+//        return view('foo');
     }
+
 
     private function __articleImageDestroy($request)
     {
@@ -44,4 +52,5 @@ class MainController extends Controller
             }
         }
     }
+
 }

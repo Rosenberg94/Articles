@@ -60,11 +60,17 @@
             </div>
             <div class="col-md-2"></div>
         </div>
+
+
+
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8 card-body">
                 <h5 class="text-center"> Comments: </h5>
+
+
                 @foreach($article->comments as $comment)
+
                     <div class="card bg-grey mt-1">
                         <div class="card-body row">
                             <div class="col-md-7">
@@ -98,6 +104,9 @@
                         </div>
                     </div>
                 @endforeach
+
+
+
             </div>
             <div class="col-md-2"></div>
         </div>
