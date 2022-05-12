@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CategoryCreateRequest;
 use App\Models\Category;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Traits\CategoryTrait;
 
 class CategoryController extends Controller
 {
+    use CategoryTrait;
+
     public function allCategories()
     {
         $categories = Category::all();
@@ -30,12 +34,9 @@ class CategoryController extends Controller
     }
 
 
-    public function categoryCreate(Request $request)
+    public function categoryCreate(CategoryCreateRequest $request)
     {
-        $data = $request->except("_token");
-        $category = new Category();
-        $category->name = $data['name'];
-        $category->save();
+        Category::create($this->getCategoryData($request));
 
         return redirect(route('categories'))->with('success', 'Category has been successfully created!');
     }
