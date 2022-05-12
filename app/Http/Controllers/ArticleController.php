@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\ArticleDeleteEvent;
 use App\Http\Requests\ArticleCreateRequest;
 use App\Http\Requests\ArticleUpdateRequest;
 use App\Http\Traits\ArticleTrait;
@@ -78,6 +79,7 @@ class ArticleController extends Controller
         if ($article){
             if($this->__authUserCheck($article)){
                 $article->delete();
+                event(new ArticleDeleteEvent($article));
 
                 return redirect(route('main'))->with('success', 'Article has been successfully deleted!');
             }
