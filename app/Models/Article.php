@@ -17,7 +17,7 @@ class Article extends Model
         'image',
     ];
 
-    protected $table = "Articles";
+    protected $table = "articles";
 
 
     public function category()
