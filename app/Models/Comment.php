@@ -16,7 +16,7 @@ class Comment extends Model
         'image',
     ];
 
-    protected $table = "Comments";
+    protected $table = "comments";
 
     public function article()
     {
