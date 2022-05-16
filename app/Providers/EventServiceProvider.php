@@ -20,6 +20,9 @@ class EventServiceProvider extends ServiceProvider
         ArticleDeleteEvent::class => [
             ArticleDeleteListener::class,
         ],
+        Registered::class => [
+            SendEmailVerificationNotification::class,
+        ],
     ];
 
     /**
