@@ -15,7 +15,7 @@
                     @if($article->image)
                         <img src="{{asset('storage/' . $article->image)}}" class="img-fluid rounded-start img-article" alt="...">
                     @else
-                        <img src="{{asset('storage/default.jpg')}}" class="img-fluid rounded-start img-article" alt="...">
+                        <img src="{{asset('storage/default/default.jpg')}}" class="img-fluid rounded-start img-article" alt="...">
                     @endif
 
                 </div>
@@ -36,10 +36,10 @@
                                 @auth
 
                                     @if(auth()->user()->userHasLike($article->id))
-                                        <img height="20px" width="20px" src="{{asset('storage/like2.png')}}" />
+                                        <img height="20px" width="20px" src="{{asset('storage/default/like2.png')}}" />
                                     @else
                                         <a href="{{route('like', ["id" => $article->id])}}" class="disabled">
-                                            <img height="20px" width="20px" src="{{asset('storage/like2.png')}}" />
+                                            <img height="20px" width="20px" src="{{asset('storage/default/like2.png')}}" />
                                         </a>
                                     @endif
 

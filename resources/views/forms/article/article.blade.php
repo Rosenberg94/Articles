@@ -12,7 +12,7 @@
                         @if($article->image)
                             <img src="{{asset('storage/' . $article->image)}}" class="img-fluid rounded-start img-article1" alt="...">
                         @else
-                            <img src="{{asset('storage/default.jpg')}}" class="img-fluid rounded-start img-article1 w3-image" alt="...">
+                            <img src="{{asset('storage/default/default.jpg')}}" class="img-fluid rounded-start img-article1 w3-image" alt="...">
                         @endif
                     </div>
                     <p class="card-text mt-3">{{$article->content}}</p>
@@ -28,10 +28,10 @@
                         <div class="col-md-2">
                             @auth
                                 @if(auth()->user()->userHasLike($article->id))
-                                    <img height="20px" width="20px" src="{{asset('storage/like2.png')}}" />
+                                    <img height="20px" width="20px" src="{{asset('storage/default/like2.png')}}" />
                                 @else
                                     <a href="{{route('like', ["id" => $article->id])}}" class="disabled">
-                                        <img height="20px" width="20px" src="{{asset('storage/like2.png')}}" />
+                                        <img height="20px" width="20px" src="{{asset('storage/default/like2.png')}}" />
                                     </a>
                                 @endif
                             @endauth
