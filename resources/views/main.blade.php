@@ -15,7 +15,7 @@
                     @if($article->image)
                         <img src="{{asset('storage/' . $article->image)}}" class="img-fluid rounded-start img-article" alt="...">
                     @else
-                        <img src="{{asset('storage/images/default.jpg')}}" class="img-fluid rounded-start img-article" alt="...">
+                        <img src="{{asset('storage/default.jpg')}}" class="img-fluid rounded-start img-article" alt="...">
                     @endif
 
                 </div>
