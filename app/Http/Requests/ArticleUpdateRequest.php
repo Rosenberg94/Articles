@@ -26,7 +26,6 @@ class ArticleUpdateRequest extends FormRequest
         return [
             'title' => ['required', 'string', 'max:255'],
             'content' => ['required', 'string'],
-//            'image' => ['mimes:png,jpg,jpeg', 'max:2048'],
             'image' => ['max:2048'],
         ];
     }

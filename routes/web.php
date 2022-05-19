@@ -22,14 +22,6 @@ Route::get('/', [MainController::class, 'index'])->name('main');
 Route::get('/foo', [MainController::class, 'foo'])->name('foo');
 Route::get('/article/{id}', '\App\Http\Controllers\ArticleController@articleShow')->name('article_show');
 
-
-
-
-Route::get('/email/verify', function () {
-    return view('auth.verify-email');
-})->middleware('auth')->name('verification.notice');
-
-
 Route::group(['middleware' =>'auth'], function() {
 
     Route::group(['prefix' => 'profile'], function() {

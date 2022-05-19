@@ -31,6 +31,5 @@ class CommentsDeleteListener
         if($comments){
             $comments->delete();
         }
-
     }
 }
