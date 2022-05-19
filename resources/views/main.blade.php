@@ -4,7 +4,6 @@
 
     <script src="{{asset('js/script.js')}}"></script>
 
-
     @if(count($articles))
         @foreach($articles as $article)
         <div class="row">
@@ -56,7 +55,6 @@
     @else
         <h3>You dont have articles</h3>
     @endif
-
 
     <div class="row mt-3">
         <div class="container text-center" >
