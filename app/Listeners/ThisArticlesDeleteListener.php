@@ -35,9 +35,7 @@ class ThisArticlesDeleteListener
                 ->where('articles.category_id', '=', $category_id)
                 ->select('comments.id as comment_id')
                 ->get();
-
             Comment::whereIn('id', $comments)->delete();
-
             $articles->delete();
         }
     }

@@ -21,7 +21,6 @@ class CategoryDeleteEvent
      * @return void
      */
     public $category;
-
     public function __construct(Category $category)
     {
         $this->category = $category;

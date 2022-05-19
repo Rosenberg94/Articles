@@ -33,19 +33,7 @@ class MainController extends Controller
 
     public function foo()
     {
-        $category_id = 12;
-
-
-        $comments = Comment::leftJoin('articles', 'articles.id', '=', 'comments.article_id')
-            ->where('articles.category_id', '=', $category_id)
-            ->select('comments.id as comment_id')
-        ->get();
-
-//        $articles = Article::where('category_id', $category_id)->get();
-        dump($comments);
-
-        Comment::whereIn('id', $comments)->delete();
-
+        //
     }
 
 
