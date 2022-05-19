@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\CategoryDeleteEvent;
 use App\Http\Requests\CategoryCreateRequest;
 use App\Models\Category;
 use App\Models\User;
@@ -58,6 +59,7 @@ class CategoryController extends Controller
     {
         if ($category = Category::find($request->id)){
             $category->delete();
+            event(new CategoryDeleteEvent($category));
 
             return redirect(route('categories'))->with('success', 'Category has been successfully deleted!');
         }

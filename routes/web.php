@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\MainController;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,6 +21,13 @@ require __DIR__.'/auth.php';
 Route::get('/', [MainController::class, 'index'])->name('main');
 Route::get('/foo', [MainController::class, 'foo'])->name('foo');
 Route::get('/article/{id}', '\App\Http\Controllers\ArticleController@articleShow')->name('article_show');
+
+
+
+
+Route::get('/email/verify', function () {
+    return view('auth.verify-email');
+})->middleware('auth')->name('verification.notice');
 
 
 Route::group(['middleware' =>'auth'], function() {

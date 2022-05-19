@@ -22,9 +22,11 @@ class ArticleController extends Controller
     public function articleShow(Request $request)
     {
         $article = Article::find($request->id);
+        $user = auth()->user();
+        $user_role = User::ROLE_ADMIN;
         $article->comments = Comment::where('article_id', '=', $article->id)->orderByDesc('created_at')->get();
 
-        return view('forms.article.article', ['comments' => $article->comments,'article' => $article]);
+        return view('forms.article.article', ['comments' => $article->comments,'article' => $article, 'user' => $user, 'user_role' => $user_role]);
     }
 
 
