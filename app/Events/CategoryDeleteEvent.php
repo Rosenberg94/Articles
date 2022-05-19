@@ -2,7 +2,7 @@
 
 namespace App\Events;
 
-use App\Models\Article;
+use App\Models\Category;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
@@ -11,7 +11,7 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class ArticleDeleteEvent
+class CategoryDeleteEvent
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -20,10 +20,11 @@ class ArticleDeleteEvent
      *
      * @return void
      */
-    public $article;
-    public function __construct(Article $article)
+    public $category;
+
+    public function __construct(Category $category)
     {
-        $this->article = $article;
+        $this->category = $category;
     }
 
 //    /**

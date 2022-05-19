@@ -6,7 +6,7 @@
         <h2 class="text-center mt-3 txt-clr">{{$article->title}}</h2>
         <div class="row">
             <div class="col-md-2"></div>
-            <div class=" card col-md-8 bg-grey mb-3 crd">
+            <div class=" card col-md-8 bg-grey mb-3 crd-dcr">
                 <div class="card-body text-center">
                     <div class="col-md-12">
                         @if($article->image)
@@ -40,7 +40,7 @@
                             <div class="col-md-2">
                                 <a href="{{route('comment_create_form', ["id" => $article->id])}}" class="btn btn-info btn-sm">Comment</a>
                             </div>
-                            @if(auth()->user()->id == $article->user_id)
+                            @if($user->id == $article->user_id || $user->role_id == $user_role)
                                 <div class="col-md-1">
                                     <a href="{{route('article_edit', ["id" => $article->id])}}" class="btn btn-warning btn-sm">Edit</a>
                                 </div>
@@ -71,7 +71,7 @@
 
                 @foreach($article->comments as $comment)
 
-                    <div class="card bg-grey mt-1">
+                    <div class="card bg-grey mt-1 crd-dcr-2">
                         <div class="card-body row">
                             <div class="col-md-7">
                                 <h6>{{$comment->user->name}}</h6>

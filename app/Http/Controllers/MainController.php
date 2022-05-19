@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\SignUp;
 use App\Models\Article;
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 
 class MainController extends Controller
@@ -27,19 +30,22 @@ class MainController extends Controller
         return view('main', ['articles' => $articles, 'categories' => $categories]);
     }
 
+
     public function foo()
     {
+        $category_id = 12;
 
 
-        $articles = Article::has('comments', '>', 10)->get();
-        dump($articles);
+        $comments = Comment::leftJoin('articles', 'articles.id', '=', 'comments.article_id')
+            ->where('articles.category_id', '=', $category_id)
+            ->select('comments.id as comment_id')
+        ->get();
 
-        return view('foo',['articles' => $articles]);
+//        $articles = Article::where('category_id', $category_id)->get();
+        dump($comments);
 
-//       $article = Article::find(5);
-//       dump(count($article->comments));
-//
-//        return view('foo');
+        Comment::whereIn('id', $comments)->delete();
+
     }
 
 

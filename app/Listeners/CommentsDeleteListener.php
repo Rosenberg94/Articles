@@ -7,7 +7,7 @@ use App\Models\Comment;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 
-class ArticleDeleteListener
+class CommentsDeleteListener
 {
     /**
      * Create the event listener.
@@ -16,7 +16,7 @@ class ArticleDeleteListener
      */
 //    public function __construct()
 //    {
-//
+//        //
 //    }
 
     /**
@@ -31,5 +31,6 @@ class ArticleDeleteListener
         if($comments){
             $comments->delete();
         }
+
     }
 }

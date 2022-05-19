@@ -3,7 +3,10 @@
 namespace App\Providers;
 
 use App\Events\ArticleDeleteEvent;
+use App\Events\CategoryDeleteEvent;
 use App\Listeners\ArticleDeleteListener;
+use App\Listeners\CommentsDeleteListener;
+use App\Listeners\ThisArticlesDeleteListener;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -17,11 +20,17 @@ class EventServiceProvider extends ServiceProvider
      * @var array<class-string, array<int, class-string>>
      */
     protected $listen = [
-        ArticleDeleteEvent::class => [
-            ArticleDeleteListener::class,
-        ],
         Registered::class => [
             SendEmailVerificationNotification::class,
+        ],
+        'Illuminate\Auth\Events\Verified' => [
+            'App\Listeners\LogVerifiedUser',
+        ],
+        ArticleDeleteEvent::class => [
+            CommentsDeleteListener::class,
+        ],
+        CategoryDeleteEvent::class => [
+          ThisArticlesDeleteListener::class,
         ],
     ];
 

@@ -71,6 +71,7 @@ class CommentController extends Controller
             if($this->authUserCheck($comment)){
                 $comment->delete();
 
+
                 return redirect(route('main'))->with('success', 'Comment has been successfully deleted!');
             }
             return back()->withErrors( 'You have no access for this action!');
