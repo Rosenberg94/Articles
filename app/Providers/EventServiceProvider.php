@@ -4,7 +4,6 @@ namespace App\Providers;
 
 use App\Events\ArticleDeleteEvent;
 use App\Events\CategoryDeleteEvent;
-use App\Listeners\ArticleDeleteListener;
 use App\Listeners\CommentsDeleteListener;
 use App\Listeners\ThisArticlesDeleteListener;
 use Illuminate\Auth\Events\Registered;

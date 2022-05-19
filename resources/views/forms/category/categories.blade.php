@@ -13,20 +13,22 @@
                             {{$category->name}}
                         </h4>
                     </button>
-                    <ul class="dropdown-menu text-center body-clr" aria-labelledby="navbarDropdown">
-                        <li class="text-center">
-                            <a href="{{route('category_edit', ["id" => $category->id])}}" class="btn btn-warning btn-sm text-center">Edit</a>
-                        </li>
-                        <li class="text-center mt-2">
-                            <form action="{{route('category_delete') }}" method="POST">
-                                {{ csrf_field() }}
-                                <input type="text" class="" name="id" value="{{$category->id}}" hidden>
-                                <button type="submit" id="delete-task-{{ $category->id }}" class="btn btn-danger btn-sm" onclick="if( ! confirm('????')){return false;}">
-                                    <i class="fa fa-btn fa-trash">Delete</i>
-                                </button>
-                            </form>
-                        </li>
-                    </ul>
+                    @if($user->role_id == $user_role)
+                        <ul class="dropdown-menu text-center body-clr" aria-labelledby="navbarDropdown">
+                            <li class="text-center">
+                                <a href="{{route('category_edit', ["id" => $category->id])}}" class="btn btn-warning btn-sm text-center">Edit</a>
+                            </li>
+                            <li class="text-center mt-2">
+                                <form action="{{route('category_delete') }}" method="POST">
+                                    {{ csrf_field() }}
+                                    <input type="text" class="" name="id" value="{{$category->id}}" hidden>
+                                    <button type="submit" id="delete-task-{{ $category->id }}" class="btn btn-danger btn-sm" onclick="if( ! confirm('????')){return false;}">
+                                        <i class="fa fa-btn fa-trash">Delete</i>
+                                    </button>
+                                </form>
+                            </li>
+                        </ul>
+                    @endif
                 </div>
                 <br>
         @endforeach

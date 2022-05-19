@@ -16,8 +16,10 @@ class CategoryController extends Controller
     public function allCategories()
     {
         $categories = Category::all();
+        $user = auth()->user();
+        $user_role = User::ROLE_ADMIN;
 
-        return view('forms.category.categories', ['categories' => $categories]);
+        return view('forms.category.categories', ['categories' => $categories, 'user' => $user, 'user_role' => $user_role]);
     }
 
 
