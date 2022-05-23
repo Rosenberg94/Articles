@@ -10,17 +10,13 @@ class UserController extends Controller
 {
     public function show()
     {
-        $weather_data = Weather::getCurrentWeather();
-
-        return view('auth.profile', ['weather_data' => $weather_data]);
+        return view('auth.profile', ['weather_data' => Weather::getCurrentWeather()]);
     }
 
 
     public function edit()
     {
-        $weather_data = Weather::getCurrentWeather();
-
-        return view('auth.editprofile', ['weather_data' => $weather_data]);
+        return view('auth.editprofile', ['weather_data' => Weather::getCurrentWeather()]);
     }
 
 
