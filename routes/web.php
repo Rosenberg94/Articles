@@ -60,7 +60,7 @@ Route::group(['middleware' =>'auth'], function() {
     });
 });
 
-
+require __DIR__. '/api.php';
 
 
 
