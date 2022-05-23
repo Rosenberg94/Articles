@@ -7,6 +7,7 @@ use App\Models\Article;
 use App\Models\Category;
 use App\Models\Comment;
 use App\Models\User;
+use App\Services\Weather;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
@@ -33,7 +34,16 @@ class MainController extends Controller
 
     public function foo()
     {
-        //
+        $articles = Article::all()
+            ->map(function($item){
+                return [
+                    'title' => $item->title,
+                    'content' => $item->content,
+                    'author' => $item->user['name'],
+                ];
+            })->toArray();
+
+        dump($articles);
     }
 
 

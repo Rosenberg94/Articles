@@ -4,6 +4,33 @@
 
     <div class="container mt-3">
         <div class="row justify-content-center">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header bg-dark-grey" align="center">
+                        <h5>Weather in Bucharest</h5>
+                    </div>
+                    <div class="card-body bg-grey">
+                        <div class="form-group row mt-3">
+                            <label for="name"  class="col-md-7 col-form-label text-md-right">Current weather:</label>
+                            <div class="col-md-5">
+                                <h4>{{$weather_data['weather']}}</h4>
+                            </div>
+                        </div>
+                        <div class="form-group row mt-3">
+                            <label for="name"  class="col-md-7 col-form-label text-md-right">Temperature:</label>
+                            <div class="col-md-5">
+                                <h4>{{$weather_data['temp']}} C</h4>
+                            </div>
+                        </div>
+                        <div class="form-group row mt-3">
+                            <label for="name"  class="col-md-7 col-form-label text-md-right">Windspeed:</label>
+                            <div class="col-md-5">
+                                <h4>{{$weather_data['wind']}} m/s</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="col-md-7">
                 <div class="card">
                     <div class="card-header bg-dark-grey" align="center">
@@ -38,14 +65,5 @@
             </div>
         </div>
     </div>
-
-
-
-
-
-
-
-
-
 
 @endsection

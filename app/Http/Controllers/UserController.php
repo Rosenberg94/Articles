@@ -3,19 +3,24 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Services\Weather;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
     public function show()
     {
-        return view('auth.profile');
+        $weather_data = Weather::getCurrentWeather();
+
+        return view('auth.profile', ['weather_data' => $weather_data]);
     }
 
 
     public function edit()
     {
-        return view('auth.editprofile');
+        $weather_data = Weather::getCurrentWeather();
+
+        return view('auth.editprofile', ['weather_data' => $weather_data]);
     }
 
 
