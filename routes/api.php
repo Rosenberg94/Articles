@@ -18,9 +18,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/api/articles', [\App\Http\Controllers\Api\FooController::class, 'articles']);
-Route::get('/api/authors', [\App\Http\Controllers\Api\FooController::class, 'authors']);
-
+Route::group(['prefix'=> 'api'], function () {
+Route::get('/articles', [\App\Http\Controllers\Api\FooController::class, 'articles']);
+Route::get('/authors', [\App\Http\Controllers\Api\FooController::class, 'authors']);
+});
 
 
 

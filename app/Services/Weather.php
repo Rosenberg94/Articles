@@ -13,13 +13,29 @@ class Weather
         $api_key = 'a1bbdb2bf4e45b0e912af819ae68e44d';
         $url = 'https://api.openweathermap.org/data/2.5/weather?lat='.$lat.'&lon='.$lon .'&units=metric&appid='.$api_key;
 
-        $weather_data = json_decode( file_get_contents($url), true);
+        try {
+            $weather_data = json_decode( file_get_contents($url), true);
 
-        $weather = $weather_data['weather']['0']['main'];
-        $temp = $weather_data['main']['temp'];
-        $wind = $weather_data['wind']['speed'];
+            $weather = $weather_data['weather']['0']['main'];
+            $temp = $weather_data['main']['temp'];
+            $wind = $weather_data['wind']['speed'];
+            $humidity = $weather_data['main']['humidity'];
 
-        return['temp' => $temp, 'weather' => $weather, 'wind' => $wind];
+            return [
+                'temp' => $temp,
+                'weather' => $weather,
+                'wind' => $wind,
+                'humidity' => $humidity,
+                'status' => true
+            ];
+
+        } catch (\Exception $e) {
+
+            return [
+                'error' => 'Error message: ' . $e->getMessage(),
+                'status' => false
+            ];
+        }
     }
 
 }
